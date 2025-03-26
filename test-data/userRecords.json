@@ -1,0 +1,30 @@
+[
+    {
+    "id": 7795616,
+    "name": "Bhadran Guneta PhD",
+    "email": "bhadran_phd_guneta@yost-jerde.test",
+    "gender": "male",
+    "status": "active"
+    },
+    {
+    "id": 7795614,
+    "name": "Anila Prajapat Sr.",
+    "email": "anila_sr_prajapat@sanford.example",
+    "gender": "male",
+    "status": "active"
+    },
+    {
+    "id": 7795612,
+    "name": "Deepali Kapoor",
+    "email": "deepali_kapoor@hane.example",
+    "gender": "male",
+    "status": "active"
+    },
+    {
+    "id": 7795611,
+    "name": "Kashyapi Desai",
+    "email": "desai_kashyapi@carroll.test",
+    "gender": "male",
+    "status": "active"
+    }
+]
