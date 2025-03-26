@@ -1,29 +1,31 @@
-- task: PowerShell@2
-  enabled: true
-  displayName: "Install dependencies"
-  inputs:
-    targetType: 'inline'
-    script: 'npm ci'
-    workingDirectory: tests/ # update accordingly
-
-- task: AzureCLI@2
-  displayName: Run Playwright Test  
-    env:
-    PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
-    # PLAYWRIGHT_SERVICE_ACCESS_TOKEN: $(PLAYWRIGHT_SERVICE_ACCESS_TOKEN) # Not recommended, use Microsoft Entra ID authentication. 
-
-  inputs:
-    azureSubscription: ConnectionName # Service connection used to authenticate this pipeline with Azure to use the service
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      npx playwright test tests/api_gorest.spec.js --config=playwright.service.config.js --workers=1
-  addSpnToEnvironment: true
-  workingDirectory: tests/ # update accordingly
-
-- task: PublishPipelineArtifact@1
-  displayName: Upload Playwright report
-  inputs:
-    targetPath: playwright-report/ # update accordingly
-    artifact: 'Playwright tests'
-    publishLocation: 'pipeline'
+jobs:
+  - job: Build
+    steps:
+      - task: PowerShell@2
+        enabled: true
+        displayName: "Install dependencies"
+        inputs:
+          targetType: 'inline'
+          script: 'npm ci'
+          workingDirectory: tests/ # update accordingly
+ 
+      - task: AzureCLI@2
+        displayName: Run Playwright Test
+        env:
+          PLAYWRIGHT_SERVICE_URL: $(PLAYWRIGHT_SERVICE_URL)
+          PLAYWRIGHT_SERVICE_RUN_ID: $(Build.DefinitionName) - $(Build.BuildNumber) - $(System.JobAttempt)
+        inputs:
+          azureSubscription: 'ConnectionName' # Service connection used to authenticate this pipeline with Azure to use the service
+          scriptType: 'pscore'
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            npx playwright test tests/api_gorest.spec.js --config=playwright.service.config.js           
+          addSpnToEnvironment: true
+          
+ 
+      - task: PublishPipelineArtifact@1
+        displayName: Upload Playwright report
+        inputs:
+          targetPath: playwright-report/ # update accordingly
+          artifact: 'Playwright tests'
+          publishLocation: 'pipeline'
