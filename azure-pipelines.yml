@@ -19,7 +19,7 @@ jobs:
           scriptType: 'pscore'
           scriptLocation: 'inlineScript'
           inlineScript: |
-            npx playwright test tests/api_gorest.spec.js --config=playwright.service.config.js           
+            npx playwright test tests/api_gorest.spec.js --config=playwright.service.config.js --workers=1           
           addSpnToEnvironment: true
           
  
