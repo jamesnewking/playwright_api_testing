@@ -16,20 +16,17 @@ module.exports = class Home {
     }
 
     async clickPrivacyCloseBanner() {
-        await this.page.locator(this.privacyCloseBannerButtonLoc).scrollIntoViewIfNeeded();
-        const buttonVisible = await this.page.locator(this.privacyCloseBannerButtonLoc).isVisible();
-        if(buttonVisible) {
-            await this.page.locator(this.privacyCloseBannerButtonLoc).click();
-        }
+        const privacyCloseBannerBUtton = await this.page.locator(this.privacyCloseBannerButtonLoc);
+        await privacyCloseBannerBUtton.waitFor({timeout: 5000});
+        await privacyCloseBannerBUtton.click();
+        return this;
     }
 
     async clickSignIn() {
-        // const buttonVisible = await this.page.locator(this.privacyCloseBannerButtonLoc).isVisible();
-        // if(buttonVisible) {
-        //     await this.page.locator(this.privacyCloseBannerButtonLoc).click();
-        // }
-        await this.page.locator(this.signInLoc).click();
-        // await this.page.waitForLoadState('networkidle');
+        const signInButton = await this.page.locator(this.signInLoc);
+        await signInButton.waitFor({timeout: 5000});
+        await signInButton.click();
+        
     }
 
     async signIn(email=`blahblah@gamil.com`, password=`password`) {
@@ -47,6 +44,7 @@ module.exports = class Home {
         // const menuItems = {fromArribute: [], fromText: []};
         const menuItems = {};
         const topLevelMenuItemsArr = await this.page.locator(this.topLevelMenuItemsLoc).all();
+        await topLevelMenuItemsArr[0].waitFor({timeout: 5000});
         const topLevelMenuItemsFromAttributeArr = await Promise.all(topLevelMenuItemsArr.map(async (item) => {
             return await item.getAttribute('data-qa-group-name');
         }));
@@ -64,10 +62,12 @@ module.exports = class Home {
         // const itemName = await this.page.locator(this.topLevelMenuItemsLoc).last().locator(this.topLevelMeanuItemsChildTextLoc).textContent();
         // console.log(itemName);
         console.table(menuItems.fromText);
-        return menuItems;
+        // return menuItems;
+        return this;
     }
 
     async clickTopLevelMenuItem(itemNumber=0){
         await this.page.locator(this.topLevelMenuItemsLoc).nth(itemNumber).click();
+        return this;
     }
 }
