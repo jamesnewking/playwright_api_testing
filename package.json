@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test tests/api_gorest.spec.js",
+    "GUItest": "npx playwright test tests/chipotle_order.spec.spec.js --headed",
     "testazure": "npx playwright test tests/api_gorest.spec.js --config=playwright.service.config.js --workers=1"
   },
   "keywords": [],
