@@ -1,30 +1,30 @@
 [
     {
-    "id": 7795616,
-    "name": "Bhadran Guneta PhD",
-    "email": "bhadran_phd_guneta@yost-jerde.test",
-    "gender": "male",
-    "status": "active"
-    },
-    {
-    "id": 7795614,
-    "name": "Anila Prajapat Sr.",
-    "email": "anila_sr_prajapat@sanford.example",
-    "gender": "male",
-    "status": "active"
-    },
-    {
-    "id": 7795612,
-    "name": "Deepali Kapoor",
-    "email": "deepali_kapoor@hane.example",
-    "gender": "male",
-    "status": "active"
-    },
-    {
-    "id": 7795611,
-    "name": "Kashyapi Desai",
-    "email": "desai_kashyapi@carroll.test",
-    "gender": "male",
-    "status": "active"
-    }
+        "id": 7803073,
+        "name": "Bishnu Joshi",
+        "email": "bishnu_joshi@robel.example",
+        "gender": "female",
+        "status": "inactive"
+        },
+        {
+        "id": 7803072,
+        "name": "Bhaves Mehrotra V",
+        "email": "mehrotra_v_bhaves@ondricka.example",
+        "gender": "female",
+        "status": "active"
+        },
+        {
+        "id": 7803071,
+        "name": "Mrs. Jyotis Patel",
+        "email": "jyotis_patel_mrs@satterfield-mosciski.test",
+        "gender": "male",
+        "status": "inactive"
+        },
+        {
+        "id": 7803070,
+        "name": "Mrs. Dipendra Guha",
+        "email": "guha_mrs_dipendra@hodkiewicz.test",
+        "gender": "female",
+        "status": "active"
+        }
 ]
